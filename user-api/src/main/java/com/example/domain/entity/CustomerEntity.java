@@ -31,7 +31,6 @@ public class CustomerEntity extends BaseEntity {
     private String password;
 
     @Column(name = "birth")
-    @Temporal(TemporalType.DATE)
     private LocalDate birth;
 
 }
