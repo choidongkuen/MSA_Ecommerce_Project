@@ -6,7 +6,7 @@ plugins {
 
 allprojects {
     apply plugin: 'java'
-    group = 'com.example'
+    group = 'com.example.ecommerce'
     version = '0.0.1-SNAPSHOT'
     sourceCompatibility = '11'
 

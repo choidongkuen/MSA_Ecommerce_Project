@@ -16,8 +16,9 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "CUSTOMER")
-public class CustomerEntity extends BaseEntity {
+@Entity
+@Table(name = "CUSTOMER")
+public class Customer extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -35,20 +36,34 @@ public class CustomerEntity extends BaseEntity {
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "birth")
     private LocalDate birth;
 
     private LocalDateTime verifyExpiredAt;
     private String verificationCode;
     private boolean verified;
+    public static Customer toEntity(SignUpForm form) {
+        return Customer.builder()
+                       .email(form.getEmail())
+                       .name(form.getName())
+                       .password(form.getPassword())
+                       .phone(form.getPhone())
+                       .birth(form.getBirthDate())
+                       .build();
+    }
 
-    public static CustomerEntity toEntity(SignUpForm form) {
-        return CustomerEntity.builder()
-                .email(form.getEmail())
-                .name(form.getName())
-                .password(form.getPassword())
-                .phone(form.getPhone())
-                .birth(form.getBirthDate())
-                .build();
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
+    }
+
+    public void setVerifyExpiredAt(LocalDateTime time) {
+        this.verifyExpiredAt = time;
+    }
+
+    public void setVerified() {
+        this.verified = true;
+    }
+
+    public boolean isVerified() {
+        return this.verified;
     }
 }
