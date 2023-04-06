@@ -4,6 +4,8 @@
 
 ## 프로젝트 목표 : 
    - 셀러와 구매자 사이를 중개해 주는 이머커스 서버를 구축한다.
+
+## 사용한 Tool : Spring, Jpa, MariaDB, JWT, Redis, Docker, AWS, 
    
 ## 회원 서버
 ### 공통
