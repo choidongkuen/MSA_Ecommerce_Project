@@ -1,10 +1,10 @@
 package com.example.application;
 
-import com.example.client.MailgunClient;
-import com.example.domain.dto.SignUpForm;
 import com.example.domain.entity.Customer;
-import com.example.mailgun.SendMailForm;
 import com.example.service.CustomerSignUpService;
+import com.example.client.MailgunClient;
+import com.example.dto.SignUpForm;
+import com.example.mailgun.SendMailForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
