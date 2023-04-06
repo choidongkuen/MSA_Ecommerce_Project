@@ -1,7 +1,7 @@
 package com.example.controller;
 
 import com.example.application.SignUpApplication;
-import com.example.domain.dto.SignUpForm;
+import com.example.dto.SignUpForm;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +25,7 @@ public class SignUpController {
         return ResponseEntity.ok(signUpApplication.customerSignUp(form));
     }
 
+    @ApiOperation(value = "회원 인증")
     @PutMapping("/verify/customer")
     public ResponseEntity<String> verifyCustomer(String email,String code) {
         this.signUpApplication.customerVerify(email,code);
