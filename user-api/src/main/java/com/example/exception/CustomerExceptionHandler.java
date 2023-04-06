@@ -1,18 +1,17 @@
 package com.example.exception;
 
-import com.example.controller.SignUpController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@RestControllerAdvice(basePackageClasses = SignUpController.class)
+@RestControllerAdvice(basePackages = "com.example")
 @Slf4j
 public class CustomerExceptionHandler {
 
     @ExceptionHandler(CustomerNotExistException.class)
-    public ResponseEntity<ErrorMessage> CustomerNotExistExceptionHandler(
+    public ResponseEntity<ErrorMessage> customerNotExistExceptionHandler(
             Exception e
     ) {
         return ResponseEntity.badRequest()
@@ -20,7 +19,7 @@ public class CustomerExceptionHandler {
     }
 
     @ExceptionHandler(CustomerAlreadyExistException.class)
-    public ResponseEntity<ErrorMessage> CustomerAlreadyExistExceptionHandler(
+    public ResponseEntity<ErrorMessage> customerAlreadyExistExceptionHandler(
             Exception e
     ) {
         return ResponseEntity.badRequest()
@@ -28,7 +27,7 @@ public class CustomerExceptionHandler {
     }
 
     @ExceptionHandler(CustomerAlreadyVerifiedException.class)
-    public ResponseEntity<ErrorMessage> CustomerAlreadyVerifiedExceptionHandler(
+    public ResponseEntity<ErrorMessage> customerAlreadyVerifiedExceptionHandler(
             Exception e
     ) {
         return ResponseEntity.badRequest()
@@ -36,7 +35,7 @@ public class CustomerExceptionHandler {
     }
 
     @ExceptionHandler(ExceedVerificationExpiredAtException.class)
-    public ResponseEntity<ErrorMessage> ExceedVerificationExpiredAtExceptionHandler(
+    public ResponseEntity<ErrorMessage> exceedVerificationExpiredAtExceptionHandler(
             Exception e
     ) {
         return ResponseEntity.badRequest()
@@ -44,7 +43,7 @@ public class CustomerExceptionHandler {
     }
 
     @ExceptionHandler(WrongVerificationCodeException.class)
-    public ResponseEntity<ErrorMessage> WrongVerificationCodeExceptionHandler(
+    public ResponseEntity<ErrorMessage> wrongVerificationCodeExceptionHandler(
             Exception e
     ) {
         return ResponseEntity.badRequest()

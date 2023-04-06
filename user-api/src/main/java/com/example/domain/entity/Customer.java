@@ -1,6 +1,6 @@
 package com.example.domain.entity;
 
-import com.example.domain.dto.SignUpForm;
+import com.example.dto.SignUpForm;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
