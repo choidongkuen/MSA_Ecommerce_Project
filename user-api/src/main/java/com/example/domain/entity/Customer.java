@@ -73,6 +73,4 @@ public class Customer extends BaseEntity {
         return this.verified;
     }
 
-    public Integer getBalance() {
-    }
 }
