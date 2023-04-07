@@ -32,7 +32,7 @@ public class CustomerSignUpService {
 
     public boolean isEmailExist(String email) { // 회원가입 이메일에 대해 이미 존재하는 이메일인지 체크
         return customerRepository.findByEmail(email.toLowerCase(Locale.ROOT))
-                .isPresent();
+            .isPresent();
     }
 
     @Transactional

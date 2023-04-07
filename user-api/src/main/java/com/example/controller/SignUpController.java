@@ -27,7 +27,8 @@ public class SignUpController {
 
     @ApiOperation(value = "회원 인증")
     @PutMapping("/verify/customer")
-    public ResponseEntity<String> verifyCustomer(String email,String code) {
+    public ResponseEntity<String> verifyCustomer(@RequestParam String email,
+                                                 @RequestParam String code) {
         this.signUpApplication.customerVerify(email,code);
         return ResponseEntity.ok("인증이 정상적으로 완료되었습니다.");
     }

@@ -1,6 +1,7 @@
 package com.example.application;
 
 import com.example.domain.entity.Customer;
+import com.example.exception.CustomerAlreadyExistException;
 import com.example.service.CustomerSignUpService;
 import com.example.client.MailgunClient;
 import com.example.dto.SignUpForm;
@@ -27,7 +28,7 @@ public class SignUpApplication {
 
     public String customerSignUp(SignUpForm request) throws AlreadyBoundException {
         if (signUpService.isEmailExist(request.getEmail())) {
-            throw new AlreadyBoundException("이미 존재하는 회원입니다.");
+            throw new CustomerAlreadyExistException("이미 존재하는 회원입니다.");
         }
         Customer storedCustomer = this.signUpService.signup(request); // 저장
         String code = getRandomCode();
@@ -39,7 +40,7 @@ public class SignUpApplication {
                                             .text(getVerificationEmailBody(request.getEmail(), request.getName(), code))
                                             .build()
         ); // 메일 전송
-        signUpService.changeCustomerValidateEmail(storedCustomer.getId(), code);
+        signUpService.changeCustomerValidateEmail(storedCustomer.getId(), code); // 회원 인증 관련 데이터 저장
         return "회원가입 정상 처리되었습니다.";
     }
 

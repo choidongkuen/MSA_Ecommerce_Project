@@ -1,18 +1,20 @@
 package org.example.domain.config;
 
-import org.example.domain.common.UserType;
-import org.example.domain.util.Aes256Util;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.example.domain.common.UserType;
+import org.example.domain.util.Aes256Util;
+
 import org.example.domain.common.UserVo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Date;
 
-import static io.jsonwebtoken.lang.Strings.hasText;
+import static org.springframework.util.StringUtils.hasText;
+
 
 @Configuration
 public class JwtAuthenticationProvider {

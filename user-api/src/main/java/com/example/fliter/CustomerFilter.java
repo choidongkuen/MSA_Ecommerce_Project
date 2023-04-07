@@ -27,7 +27,7 @@ public class CustomerFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request; // HttpServletRequest -> ServletRequest
         String token = req.getHeader(HEADER);
 
-        if(!jwtAuthenticationProvider.validateToken(token)) {
+        if(!jwtAuthenticationProvider.validateToken(token)) { // 유효성 검증
             throw new ServletException("유효하지 않은 접근입니다.");
         }
 

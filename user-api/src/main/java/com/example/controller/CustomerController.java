@@ -31,6 +31,7 @@ public class CustomerController {
             @RequestHeader(name = HEADER) String token
     ) {
         UserVo userVo = this.jwtAuthenticationProvider.getUserVo(token);
+
         Customer customer =
                 this.customerService.findByIdAndEmail(userVo.getUserId(), userVo.getUserEmail())
                                     .orElseThrow(() -> new CustomerNotExistException("일치하는 회원 정보가 존재하지 않습니다."));
