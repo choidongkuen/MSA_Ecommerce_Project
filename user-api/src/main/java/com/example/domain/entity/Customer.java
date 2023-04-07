@@ -24,7 +24,7 @@ public class Customer extends BaseEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "email",unique = true)
+    @Column(name = "email", unique = true)
     private String email;
 
     @Column(name = "name")
@@ -41,6 +41,7 @@ public class Customer extends BaseEntity {
     private LocalDateTime verifyExpiredAt;
     private String verificationCode;
     private boolean verified;
+
     public static Customer toEntity(SignUpForm form) {
         return Customer.builder()
                        .email(form.getEmail())
@@ -48,6 +49,7 @@ public class Customer extends BaseEntity {
                        .password(form.getPassword())
                        .phone(form.getPhone())
                        .birth(form.getBirthDate())
+                       .verified(false)
                        .build();
     }
 

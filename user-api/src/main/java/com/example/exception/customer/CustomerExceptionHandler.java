@@ -1,8 +1,8 @@
 package com.example.exception.customer;
 
 import com.example.controller.customer.CustomerController;
-import com.example.controller.customer.SignInController;
-import com.example.controller.customer.SignUpController;
+import com.example.controller.SignInController;
+import com.example.controller.SignUpController;
 import com.example.exception.ErrorMessage;
 import com.example.exception.ExceedVerificationExpiredAtException;
 import com.example.exception.WrongVerificationCodeException;

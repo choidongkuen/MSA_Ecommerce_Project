@@ -37,13 +37,10 @@ public class CustomerSignUpService {
 
     @Transactional
     public LocalDateTime changeCustomerValidateEmail(Long customerId,String verificationCode) {
-        Optional<Customer> optionalCustomer = this.customerRepository.findById(customerId);
 
-        if(optionalCustomer.isEmpty()) {
-            throw new CustomerNotExistException("일치하는 회원이 존재하지 않습니다.");
-        }
+        Customer customer = this.customerRepository.findById(customerId)
+                .orElseThrow(() -> new CustomerNotExistException("일치하는 회원이 존재하지 않습니다."));
 
-        Customer customer = optionalCustomer.get();
         customer.setVerificationCode(verificationCode);
         customer.setVerifyExpiredAt(LocalDateTime.now().plusDays(1));
         return customer.getVerifyExpiredAt();

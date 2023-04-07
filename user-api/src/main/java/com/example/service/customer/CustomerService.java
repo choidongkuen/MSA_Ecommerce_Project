@@ -18,7 +18,7 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
 
-    public Customer findByValidCustomer(String email, String password) {
+    public Customer findByValidCustomer(String email, String password) { // 로그인 시 사용
         Customer customer = this.customerRepository.findByEmail(email) // 이메일 존재하지 않는 경우
                                .orElseThrow(() -> new CustomerNotExistException("일치하는 회원이 존재하지 않습니다."));
 

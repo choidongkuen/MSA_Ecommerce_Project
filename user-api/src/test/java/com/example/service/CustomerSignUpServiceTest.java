@@ -3,6 +3,7 @@ package com.example.service;
 import com.example.domain.entity.Customer;
 import com.example.domain.repository.CustomerRepository;
 import com.example.dto.SignUpForm;
+import com.example.service.customer.CustomerSignUpService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
