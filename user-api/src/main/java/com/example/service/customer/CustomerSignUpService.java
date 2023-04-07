@@ -1,12 +1,12 @@
-package com.example.service;
+package com.example.service.customer;
 
 import com.example.domain.entity.Customer;
 import com.example.domain.repository.CustomerRepository;
 import com.example.dto.SignUpForm;
-import com.example.exception.CustomerAlreadyVerifiedException;
-import com.example.exception.CustomerNotExistException;
 import com.example.exception.ExceedVerificationExpiredAtException;
 import com.example.exception.WrongVerificationCodeException;
+import com.example.exception.customer.CustomerAlreadyVerifiedException;
+import com.example.exception.customer.CustomerNotExistException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

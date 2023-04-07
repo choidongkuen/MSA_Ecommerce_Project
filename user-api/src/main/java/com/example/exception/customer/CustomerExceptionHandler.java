@@ -1,12 +1,18 @@
-package com.example.exception;
+package com.example.exception.customer;
 
+import com.example.controller.customer.CustomerController;
+import com.example.controller.customer.SignInController;
+import com.example.controller.customer.SignUpController;
+import com.example.exception.ErrorMessage;
+import com.example.exception.ExceedVerificationExpiredAtException;
+import com.example.exception.WrongVerificationCodeException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@RestControllerAdvice(basePackages = "com.example")
+@RestControllerAdvice(basePackageClasses = {CustomerController.class, SignInController.class, SignUpController.class})
 @Slf4j
 public class CustomerExceptionHandler {
 

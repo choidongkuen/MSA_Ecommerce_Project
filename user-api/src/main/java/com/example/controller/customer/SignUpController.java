@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.controller.customer;
 
 import com.example.application.SignUpApplication;
 import com.example.dto.SignUpForm;
@@ -27,7 +27,7 @@ public class SignUpController {
 
     @ApiOperation(value = "회원 인증")
     @PutMapping("/verify/customer")
-    public ResponseEntity<String> verifyCustomer(@RequestParam String email,
+    public ResponseEntity<String> vrifyCustomer(@RequestParam String email,
                                                  @RequestParam String code) {
         this.signUpApplication.customerVerify(email,code);
         return ResponseEntity.ok("인증이 정상적으로 완료되었습니다.");

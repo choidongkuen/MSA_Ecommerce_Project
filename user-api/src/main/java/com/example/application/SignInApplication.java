@@ -3,7 +3,7 @@ package com.example.application;
 
 import com.example.domain.entity.Customer;
 import com.example.dto.SignInForm;
-import com.example.service.CustomerService;
+import com.example.service.customer.CustomerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.domain.common.UserType;

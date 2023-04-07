@@ -1,6 +1,6 @@
 package com.example.fliter;
 
-import com.example.service.CustomerService;
+import com.example.service.customer.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.common.UserVo;
 import org.example.domain.config.JwtAuthenticationProvider;

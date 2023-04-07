@@ -1,10 +1,10 @@
-package com.example.service;
+package com.example.service.customer;
 
 import com.example.domain.entity.Customer;
 import com.example.domain.repository.CustomerRepository;
-import com.example.exception.CustomerNotVerifiedException;
-import com.example.exception.CustomerPasswordNotMatchException;
-import com.example.exception.CustomerNotExistException;
+import com.example.exception.customer.CustomerNotExistException;
+import com.example.exception.customer.CustomerNotVerifiedException;
+import com.example.exception.customer.CustomerPasswordNotMatchException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

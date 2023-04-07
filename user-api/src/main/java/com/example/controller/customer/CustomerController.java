@@ -1,13 +1,13 @@
-package com.example.controller;
+package com.example.controller.customer;
 
 import com.example.domain.entity.Customer;
-import org.example.domain.common.UserVo;
-import org.example.domain.config.JwtAuthenticationProvider;
 import com.example.dto.CustomerDto;
-import com.example.exception.CustomerNotExistException;
-import com.example.service.CustomerService;
+import com.example.exception.customer.CustomerNotExistException;
+import com.example.service.customer.CustomerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.domain.common.UserVo;
+import org.example.domain.config.JwtAuthenticationProvider;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;

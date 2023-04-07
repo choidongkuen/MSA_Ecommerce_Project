@@ -1,11 +1,11 @@
 package com.example.application;
 
 import com.example.domain.entity.Customer;
-import com.example.exception.CustomerAlreadyExistException;
-import com.example.service.CustomerSignUpService;
 import com.example.client.MailgunClient;
 import com.example.dto.SignUpForm;
+import com.example.exception.customer.CustomerAlreadyExistException;
 import com.example.mailgun.SendMailForm;
+import com.example.service.customer.CustomerSignUpService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;

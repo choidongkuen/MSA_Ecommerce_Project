@@ -1,4 +1,4 @@
-package com.example.exception;
+package com.example.exception.customer;
 
 public class CustomerNotExistException extends RuntimeException {
     public CustomerNotExistException(String msg) {

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Date;
+import java.util.Objects;
 
 import static org.springframework.util.StringUtils.hasText;
 
@@ -44,12 +45,15 @@ public class JwtAuthenticationProvider {
         if (!hasText(token)) {
             return false;
         }
-        return this.parseClaims(token).getExpiration().before(new Date());
+        return this.parseClaims(token).getExpiration().after(new Date());
     }
+
+    // 만료기간이 지나면 false
+    // 만료기간 안지나면 true
 
     public UserVo getUserVo(String token) {
         Claims claims = this.parseClaims(token);
-        return new UserVo(Long.valueOf(Aes256Util.decrypt(claims.getId())), Aes256Util.decrypt(claims.getSubject()));
+        return new UserVo(Long.valueOf(Objects.requireNonNull(Aes256Util.decrypt(claims.getId()))), Aes256Util.decrypt(claims.getSubject()));
     }
 
     private Claims parseClaims(String token) {

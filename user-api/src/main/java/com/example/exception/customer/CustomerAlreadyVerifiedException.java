@@ -1,4 +1,4 @@
-package com.example.exception;
+package com.example.exception.customer;
 
 public class CustomerAlreadyVerifiedException extends RuntimeException {
 
