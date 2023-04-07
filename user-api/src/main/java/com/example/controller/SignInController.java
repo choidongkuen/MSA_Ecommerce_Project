@@ -1,4 +1,4 @@
-package com.example.controller.customer;
+package com.example.controller;
 
 
 import com.example.application.SignInApplication;
@@ -21,11 +21,19 @@ public class SignInController {
 
     private final SignInApplication signInApplication;
 
-    @ApiOperation("로그인")
+    @ApiOperation("고객 로그인")
     @PostMapping("/customer")
     public ResponseEntity<String> signInCustomer(
             @RequestBody SignInForm request
     ) {
         return ResponseEntity.ok().body(this.signInApplication.customerLoginToken(request));
+    }
+
+    @ApiOperation("판매자 로그인")
+    @PostMapping("/seller")
+    public ResponseEntity<String> signInSeller(
+            @RequestBody SignInForm request
+    ) {
+        return ResponseEntity.ok().body(this.signInApplication.sellerLogInToken(request));
     }
 }
