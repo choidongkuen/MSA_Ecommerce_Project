@@ -1,8 +1,8 @@
 package com.example.exception.customer;
 
-import com.example.controller.customer.CustomerController;
 import com.example.controller.SignInController;
 import com.example.controller.SignUpController;
+import com.example.controller.customer.CustomerController;
 import com.example.exception.ErrorMessage;
 import com.example.exception.ExceedVerificationExpiredAtException;
 import com.example.exception.WrongVerificationCodeException;
@@ -50,6 +50,14 @@ public class CustomerExceptionHandler {
 
     @ExceptionHandler(WrongVerificationCodeException.class)
     public ResponseEntity<ErrorMessage> wrongVerificationCodeExceptionHandler(
+            Exception e
+    ) {
+        return ResponseEntity.badRequest()
+                             .body(ErrorMessage.of(e, HttpStatus.BAD_REQUEST));
+    }
+
+    @ExceptionHandler(CustomerBalanceNotEnoughException.class)
+    public ResponseEntity<ErrorMessage> customerBalanceNotEnoughExceptionHandler(
             Exception e
     ) {
         return ResponseEntity.badRequest()

@@ -36,7 +36,6 @@ public class Customer extends BaseEntity {
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "birth_date")
     private LocalDate birth;
 
     @Column(name = "balance", columnDefinition = "int default 0")
@@ -73,6 +72,7 @@ public class Customer extends BaseEntity {
         return this.verified;
     }
 
-    public Integer getBalance() {
+    public void changeBalance(Integer changedBalance) {
+        this.balance = changedBalance;
     }
 }

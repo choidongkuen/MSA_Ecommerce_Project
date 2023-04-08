@@ -25,7 +25,7 @@ public class JwtAuthenticationProvider {
     public String createToken(String userPk, Long id, UserType userType) {
         Claims claims = Jwts.claims()
                             .setSubject(Aes256Util.encrypt(userPk))
-                            .setId(id.toString());
+                            .setId(Aes256Util.encrypt(id.toString()));
 
         claims.put("roles", userType);
         Date now = new Date();
@@ -56,6 +56,6 @@ public class JwtAuthenticationProvider {
 
     public UserVo getUserVo(String token) {
         Claims claims = Jwts.parser().setSigningKey(this.secretKey).parseClaimsJws(token).getBody();
-        return new UserVo(Long.valueOf((Objects.requireNonNull(Aes256Util.decrypt(claims.getId())))), Aes256Util.decrypt(claims.getSubject()));
+        return new UserVo(Long.valueOf(Objects.requireNonNull(Aes256Util.decrypt(claims.getId()))), Aes256Util.decrypt(claims.getSubject()));
     }
 }
