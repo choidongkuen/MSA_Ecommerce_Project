@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 public class ChangeBalanceDto {
 
-    private String form;
+    private String from;
     private String message;
     private Integer money;
 }

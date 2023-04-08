@@ -23,7 +23,7 @@ public class CustomerBalanceHistory extends BaseEntity{
     @ManyToOne(targetEntity = Customer.class,fetch = FetchType.LAZY)
     private Customer customer;
 
-    private Integer changedBalance; // 변경된 돈
+    private Integer changedBalance; // 변경된 돈(+ or -)
 
     private Integer currentBalance; // 현재 잔액
 

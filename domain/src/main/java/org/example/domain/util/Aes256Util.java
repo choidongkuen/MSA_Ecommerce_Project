@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
 */
 public class Aes256Util {
 
-    public static String alg = "AES/CBC/PKC55Padding"; // 암호화 알고리즘
+    public static String alg = "AES/CBC/PKCS5Padding"; // 암호화 알고리즘
 
     private static final String KEY = "ZEROBASEKEYISZEROBASEKEY"; // 24bytes
     private static final String IV = KEY.substring(0, 16);
