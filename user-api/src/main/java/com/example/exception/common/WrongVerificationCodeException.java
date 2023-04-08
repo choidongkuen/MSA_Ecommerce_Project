@@ -1,4 +1,4 @@
-package com.example.exception;
+package com.example.exception.common;
 
 public class WrongVerificationCodeException extends RuntimeException{
     public WrongVerificationCodeException(String msg) {
