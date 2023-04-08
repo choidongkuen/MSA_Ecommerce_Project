@@ -1,0 +1,74 @@
+### 회원가입( 고객 )
+POST http://localhost:8080/signup/customer
+Content-Type: application/json
+
+{
+  "email": "danaver12@daum.net",
+  "name": "최동근",
+  "password": "ehdrms6390",
+  "birthDate": "1997-12-01",
+  "phone": "010-9017-6902"
+}
+
+### 이메일 인증( 고객 )
+GET http://localhost:8080/signup/customer/verify?email=danaver12@daum.net&code=pXdwCbm1gO
+
+### 로그인( 고객 )
+POST http://localhost:8080/signin/customer
+Content-Type: application/json
+
+{
+  "email": "danaver12@daum.net",
+  "password": "ehdrms6390"
+}
+
+
+### 회원 조회 ( 고객 )
+GET http://localhost:8080/customer/userInfo
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlJGaStTTmh0anRVb3ZXbk9ubzJ5QUE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODA5NjY0NzksImV4cCI6MTY4MDk3MDA3OX0.VVjfDbLCtF-Aoa8bLAHmEalN1c1bo0VdfDhcMesddbk
+
+
+### 예치금 관리 ( 고객 )
+POST http://localhost:8080/customer/balance
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlJGaStTTmh0anRVb3ZXbk9ubzJ5QUE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODA5NjY0NzksImV4cCI6MTY4MDk3MDA3OX0.VVjfDbLCtF-Aoa8bLAHmEalN1c1bo0VdfDhcMesddbk
+
+{
+  "from": "from",
+  "message": "6000 원 예치합니다.",
+  "money": 2000
+}
+
+
+#########################3
+
+
+### 회원가입 ( 셀러 )
+POST http://localhost:8080/signup/seller
+Content-Type: application/json
+
+{
+  "email": "danaver12@daum.net",
+  "name": "최동근",
+  "password": "ehdrms6390",
+  "birthDate": "1997-12-01",
+  "phone": "010-9017-6902"
+}
+
+### 이메일 인증 ( 셀러 )
+GET http://localhost:8080/signup/seller/verify?email=danaver12@daum.net&code=OZ2ibv8wY2
+
+
+
+### 로그인 ( 셀러 )
+POST http://localhost:8080/signin/seller
+Content-Type: application/json
+
+{
+  "email": "danaver12@daum.net",
+  "password": "ehdrms6390"
+}
+
+
+
