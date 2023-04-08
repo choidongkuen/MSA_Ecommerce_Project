@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -34,8 +36,7 @@ public class SellerService {
         return seller;
     }
 
-    public Seller findByIdAndEmail(Long id, String email) {
-        return this.sellerRepository.findByIdAndEmail(id, email)
-                                    .orElseThrow(() -> new SellerNotExistException("일치하는 판매자가 존재하지 않습니다."));
+    public Optional<Seller> findByIdAndEmail(Long id, String email) {
+        return this.sellerRepository.findByIdAndEmail(id, email);
     }
 }

@@ -19,6 +19,8 @@ public class CustomerDto {
     private Integer balance;
 
     public static CustomerDto fromEntity(Customer customer) {
-        return new CustomerDto(customer.getId(), customer.getEmail(),customer.getBalance());
+        return new CustomerDto(
+                customer.getId(), customer.getEmail(),customer.getBalance()==null?0:customer.getBalance()
+        );
     }
 }

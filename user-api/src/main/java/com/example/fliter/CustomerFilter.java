@@ -33,7 +33,7 @@ public class CustomerFilter implements Filter {
 
         UserVo userVo = jwtAuthenticationProvider.getUserVo(token);
         this.customerService.findByIdAndEmail(userVo.getUserId(), userVo.getUserEmail())
-                .orElseThrow(() -> new ServletException("유효하지 않은 접근입니다.")); // 해당 회원 존재 여부 판단
+                 .orElseThrow(() -> new ServletException("유효하지 않은 접근입니다.")); // 해당 회원 존재 여부 판단
 
         chain.doFilter(request,response);
     }
