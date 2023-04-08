@@ -4,8 +4,9 @@ package com.example.service.seller;
 import com.example.domain.entity.Seller;
 import com.example.domain.repository.SellerRepository;
 import com.example.dto.SignUpForm;
-import com.example.exception.ExceedVerificationExpiredAtException;
-import com.example.exception.WrongVerificationCodeException;
+
+import com.example.exception.common.ExceedVerificationExpiredAtException;
+import com.example.exception.common.WrongVerificationCodeException;
 import com.example.exception.seller.SellerAlreadyVerifiedException;
 import com.example.exception.seller.SellerNotExistException;
 import lombok.RequiredArgsConstructor;
