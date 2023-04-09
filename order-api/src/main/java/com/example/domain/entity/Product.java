@@ -34,7 +34,6 @@ public class Product extends BaseEntity {
     private String description;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    @JoinColumn(name = "productItems")
     private List<ProductItem> productItemList = new ArrayList<>();
 
     public static Product of(Long sellerId, AddProductRequestDto dto) {
