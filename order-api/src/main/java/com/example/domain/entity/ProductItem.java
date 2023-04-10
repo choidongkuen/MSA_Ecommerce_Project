@@ -2,6 +2,8 @@ package com.example.domain.entity;
 
 
 import com.example.dto.product.AddProductItemRequestDto;
+import com.example.dto.product.UpdateProductItemRequestDto;
+import com.example.dto.product.UpdateProductRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -47,6 +49,14 @@ public class ProductItem extends BaseEntity {
 
     public Product setProduct(Product product) {
         this.product = product;
+        return this.product;
+    }
+
+    public Product updateProductItem(UpdateProductItemRequestDto request) {
+        this.name = request.getName();
+        this.price = request.getPrice();
+        this.count = request.getCount();
+
         return this.product;
     }
 }

@@ -32,4 +32,12 @@ public class ProductExceptionHandler {
         return ResponseEntity.badRequest()
                              .body(ErrorMessage.of(e, HttpStatus.BAD_REQUEST));
     }
+
+    @ExceptionHandler(ProductItemNotExistException.class)
+    public ResponseEntity<ErrorMessage> productItemNotExistExceptionHandler(
+            Exception e
+    ) {
+        return ResponseEntity.badRequest()
+                             .body(ErrorMessage.of(e, HttpStatus.BAD_REQUEST));
+    }
 }

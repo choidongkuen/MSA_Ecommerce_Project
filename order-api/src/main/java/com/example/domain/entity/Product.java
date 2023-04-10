@@ -1,6 +1,7 @@
 package com.example.domain.entity;
 
 import com.example.dto.product.AddProductRequestDto;
+import com.example.dto.product.UpdateProductRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -46,6 +47,12 @@ public class Product extends BaseEntity {
                       .map((e) -> ProductItem.of(sellerId, e))
                       .collect(Collectors.toList()))
                     .build();
+    }
+
+    public Product updateProduct(UpdateProductRequestDto request) {
+        this.name = request.getName();
+        this.description = request.getDescription();
+        return this;
     }
 }
 

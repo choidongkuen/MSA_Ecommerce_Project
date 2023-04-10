@@ -1,15 +1,15 @@
 ### 셀러 상품 등록
 POST http://localhost:8081/seller/product
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMTAxMjQyLCJleHAiOjE2ODExMDQ4NDJ9.C4H6oAMc0OGfGgOzNv7MmbrbPlOha466UMHAvJGHQj8
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMTE3ODI0LCJleHAiOjE2ODExMjE0MjR9.eZY_5RLrsOMkNSmPfHHXxuor4uPnBpB1tZtZaaCPjS0
 
 {
   "name": "아이패드",
   "description": "안녕하세요 최고의 상품",
   "addProductItemRequestDtos": [
     {
-      "productId": 2,
-      "name": "아이템2",
+      "productId": 1,
+      "name": "아이템1",
       "price": 1000000,
       "count": 100
     }
@@ -20,11 +20,44 @@ Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJR
 ### 셀러 상품 아이템 등록
 POST http://localhost:8081/seller/product/item
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMTAxMjQyLCJleHAiOjE2ODExMDQ4NDJ9.C4H6oAMc0OGfGgOzNv7MmbrbPlOha466UMHAvJGHQj8
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMTE3ODI0LCJleHAiOjE2ODExMjE0MjR9.eZY_5RLrsOMkNSmPfHHXxuor4uPnBpB1tZtZaaCPjS0
 
 {
   "productId": 1,
-  "name": "아이템1",
+  "name": "아이템2",
   "price": 10000,
   "count": 100
+}
+
+### 셀러 상품 수정
+PUT http://localhost:8081/seller/product
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMTE3ODI0LCJleHAiOjE2ODExMjE0MjR9.eZY_5RLrsOMkNSmPfHHXxuor4uPnBpB1tZtZaaCPjS0
+
+{
+  "id": 1,
+  "name": "수정된 이름",
+  "description": "애플이 출시한 최고의 테블릿!",
+  "items":
+          [
+            {
+              "id": 1,
+              "name": "아이템2",
+              "price": 200000,
+              "count": 100000000
+            }
+
+          ]
+}
+
+### 셀러 상품 아이템 수정
+PUT localhost:8081/seller/product/item
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMTE3ODI0LCJleHAiOjE2ODExMjE0MjR9.eZY_5RLrsOMkNSmPfHHXxuor4uPnBpB1tZtZaaCPjS0
+
+{
+  "id": 1,
+  "name": "수정된 아이템1",
+  "price": 100,
+  "count": 1
 }
