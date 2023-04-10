@@ -33,7 +33,7 @@ public class ProductItem extends BaseEntity {
 
     private Integer count;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 
