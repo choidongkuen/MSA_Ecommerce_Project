@@ -1,7 +1,7 @@
 ### 셀러 상품 등록
 POST http://localhost:8081/seller/product
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMTE3ODI0LCJleHAiOjE2ODExMjE0MjR9.eZY_5RLrsOMkNSmPfHHXxuor4uPnBpB1tZtZaaCPjS0
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMTIxODE1LCJleHAiOjE2ODExMjU0MTV9.syChZ5pu2l78lvRpM2clEnhSId8DdStVb2T6LMhDcDM
 
 {
   "name": "아이패드",
@@ -20,10 +20,10 @@ Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJR
 ### 셀러 상품 아이템 등록
 POST http://localhost:8081/seller/product/item
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMTE3ODI0LCJleHAiOjE2ODExMjE0MjR9.eZY_5RLrsOMkNSmPfHHXxuor4uPnBpB1tZtZaaCPjS0
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMTIxODE1LCJleHAiOjE2ODExMjU0MTV9.syChZ5pu2l78lvRpM2clEnhSId8DdStVb2T6LMhDcDM
 
 {
-  "productId": 1,
+  "productId": 3,
   "name": "아이템2",
   "price": 10000,
   "count": 100
@@ -32,7 +32,7 @@ Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJR
 ### 셀러 상품 수정
 PUT http://localhost:8081/seller/product
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMTE3ODI0LCJleHAiOjE2ODExMjE0MjR9.eZY_5RLrsOMkNSmPfHHXxuor4uPnBpB1tZtZaaCPjS0
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMTIxODE1LCJleHAiOjE2ODExMjU0MTV9.syChZ5pu2l78lvRpM2clEnhSId8DdStVb2T6LMhDcDM
 
 {
   "id": 1,
@@ -61,3 +61,13 @@ Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJR
   "price": 100,
   "count": 1
 }
+
+### 셀러 상품 삭제
+DELETE localhost:8081/seller/product/3
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMTIxODE1LCJleHAiOjE2ODExMjU0MTV9.syChZ5pu2l78lvRpM2clEnhSId8DdStVb2T6LMhDcDM
+
+### 셀러 상품 아이템 삭제
+DELETE localhost:8081/seller/product/item/8
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMTIxODE1LCJleHAiOjE2ODExMjU0MTV9.syChZ5pu2l78lvRpM2clEnhSId8DdStVb2T6LMhDcDM
