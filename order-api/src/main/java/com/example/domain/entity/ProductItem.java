@@ -38,9 +38,15 @@ public class ProductItem extends BaseEntity {
     public static ProductItem of(Long sellerId, AddProductItemRequestDto request) {
         return ProductItem.builder()
                 .sellerId(sellerId)
+                .product(null)
                 .name(request.getName())
                 .price(request.getPrice())
                 .count(request.getCount())
                 .build();
+    }
+
+    public Product setProduct(Product product) {
+        this.product = product;
+        return this.product;
     }
 }

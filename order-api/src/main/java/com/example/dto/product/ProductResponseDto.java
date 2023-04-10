@@ -12,21 +12,21 @@ import java.util.stream.Collectors;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddProductResponseDto {
+public class ProductResponseDto {
 
     private Long id;
 
     private String name;
 
-    private List<AddProductItemResponseDto> productItems = new ArrayList<>();
+    private List<ProductItemResponseDto> productItems = new ArrayList<>();
 
-    public static AddProductResponseDto from(Product product) {
-        return AddProductResponseDto.builder()
+    public static ProductResponseDto from(Product product) {
+        return ProductResponseDto.builder()
                 .id(product.getId())
                 .name(product.getName())
                 .productItems(
                         product.getProductItemList().stream()
-                                .map(AddProductItemResponseDto::from)
+                                .map(pl -> ProductItemResponseDto.of(product.getSellerId(),pl))
                                 .collect(Collectors.toList())
                 ).build();
     }
