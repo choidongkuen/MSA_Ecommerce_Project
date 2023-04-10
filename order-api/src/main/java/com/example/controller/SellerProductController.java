@@ -26,25 +26,21 @@ public class SellerProductController {
             @RequestHeader(name = "Authorization") String token,
             @RequestBody AddProductRequestDto request
     ) {
-        Long sellerId = getSellerId(token);
+        Long sellerId = this.jwtAuthenticationProvider.getUserVo(token).getUserId();
         return ResponseEntity.ok().body(
                 ProductResponseDto.from(this.productService.addProduct(sellerId, request))
         );
 
     }
 
-    @PostMapping // productItem 등록
+    @PostMapping ("/item")// productItem 등록
     public ResponseEntity<ProductResponseDto> addProductItem(
             @RequestHeader(name = "Authorization") String token,
             @RequestBody AddProductItemRequestDto request
     ) {
-        Long sellerId = getSellerId(token);
+        Long sellerId = this.jwtAuthenticationProvider.getUserVo(token).getUserId();
         return ResponseEntity.ok().body(
                 ProductResponseDto.from(this.productService.addProductItem(sellerId, request))
         );
-    }
-
-    private Long getSellerId(String token) {
-        return this.jwtAuthenticationProvider.getUserVo(token).getUserId();
     }
 }
