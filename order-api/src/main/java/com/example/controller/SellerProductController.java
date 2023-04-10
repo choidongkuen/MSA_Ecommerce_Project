@@ -1,8 +1,6 @@
 package com.example.controller;
 
-import com.example.dto.product.AddProductItemRequestDto;
-import com.example.dto.product.AddProductRequestDto;
-import com.example.dto.product.ProductResponseDto;
+import com.example.dto.product.*;
 import com.example.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +31,7 @@ public class SellerProductController {
 
     }
 
-    @PostMapping ("/item")// productItem 등록
+    @PostMapping("/item")// productItem 등록
     public ResponseEntity<ProductResponseDto> addProductItem(
             @RequestHeader(name = "Authorization") String token,
             @RequestBody AddProductItemRequestDto request
@@ -41,6 +39,28 @@ public class SellerProductController {
         Long sellerId = this.jwtAuthenticationProvider.getUserVo(token).getUserId();
         return ResponseEntity.ok().body(
                 ProductResponseDto.from(this.productService.addProductItem(sellerId, request))
+        );
+    }
+
+    @PutMapping() // Product 수정
+    public ResponseEntity<ProductResponseDto> updateProduct(
+            @RequestHeader(name = "Authorization") String token,
+            @RequestBody UpdateProductRequestDto request
+    ) {
+        Long sellerId = this.jwtAuthenticationProvider.getUserVo(token).getUserId();
+        return ResponseEntity.ok().body(
+                ProductResponseDto.from(this.productService.updateProduct(sellerId, request))
+        );
+    }
+
+    @PutMapping("/item") // ProductItem 수정
+    public ResponseEntity<ProductResponseDto> updateProductItem(
+            @RequestHeader(name = "Authorization") String token,
+            @RequestBody UpdateProductItemRequestDto request
+    ) {
+        Long sellerId = this.jwtAuthenticationProvider.getUserVo(token).getUserId();
+        return ResponseEntity.ok().body(
+                ProductResponseDto.from(this.productService.updateProductItem(sellerId, request))
         );
     }
 }
