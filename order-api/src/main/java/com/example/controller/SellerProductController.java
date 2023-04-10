@@ -24,7 +24,7 @@ public class SellerProductController {
             @RequestHeader(name = "Authorization") String token,
             @RequestBody AddProductRequestDto request
     ) {
-        Long sellerId = this.jwtAuthenticationProvider.getUserVo(token).getUserId();
+        Long sellerId = getSellerId(token);
         return ResponseEntity.ok().body(
                 ProductResponseDto.from(this.productService.addProduct(sellerId, request))
         );
@@ -36,7 +36,7 @@ public class SellerProductController {
             @RequestHeader(name = "Authorization") String token,
             @RequestBody AddProductItemRequestDto request
     ) {
-        Long sellerId = this.jwtAuthenticationProvider.getUserVo(token).getUserId();
+        Long sellerId = getSellerId(token);
         return ResponseEntity.ok().body(
                 ProductResponseDto.from(this.productService.addProductItem(sellerId, request))
         );
@@ -47,7 +47,7 @@ public class SellerProductController {
             @RequestHeader(name = "Authorization") String token,
             @RequestBody UpdateProductRequestDto request
     ) {
-        Long sellerId = this.jwtAuthenticationProvider.getUserVo(token).getUserId();
+        Long sellerId = getSellerId(token);
         return ResponseEntity.ok().body(
                 ProductResponseDto.from(this.productService.updateProduct(sellerId, request))
         );
@@ -58,9 +58,34 @@ public class SellerProductController {
             @RequestHeader(name = "Authorization") String token,
             @RequestBody UpdateProductItemRequestDto request
     ) {
-        Long sellerId = this.jwtAuthenticationProvider.getUserVo(token).getUserId();
+        Long sellerId = getSellerId(token);
         return ResponseEntity.ok().body(
                 ProductResponseDto.from(this.productService.updateProductItem(sellerId, request))
         );
+    }
+
+    @DeleteMapping("/{productId}") // Product 삭제
+    public ResponseEntity<Void> deleteProduct(
+            @RequestHeader(name = "Authorization") String token,
+            @PathVariable(name = "productId") Long id
+    ) {
+        Long sellerId = getSellerId(token);
+        this.productService.deleteProduct(sellerId,id);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/item/{productItemId}") // ProductItem 삭제
+    public ResponseEntity<Void> deleteProductItem(
+            @RequestHeader(name = "Authorization") String token,
+            @PathVariable(name = "productItemId") Long id
+    ) {
+        Long sellerId = getSellerId(token);
+        this.productService.deleteProductItem(sellerId,id);
+        return ResponseEntity.ok().build();
+    }
+
+    private Long getSellerId(String token) {
+        Long sellerId = this.jwtAuthenticationProvider.getUserVo(token).getUserId();
+        return sellerId;
     }
 }
