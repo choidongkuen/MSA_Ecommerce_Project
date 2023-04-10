@@ -14,7 +14,7 @@ public class ProductExceptionHandler {
             Exception e
     ) {
         return ResponseEntity.badRequest()
-                .body(ErrorMessage.of(e, HttpStatus.BAD_REQUEST));
+                             .body(ErrorMessage.of(e, HttpStatus.BAD_REQUEST));
     }
 
     @ExceptionHandler(ProductItemAlreadyExistException.class)
@@ -22,6 +22,14 @@ public class ProductExceptionHandler {
             Exception e
     ) {
         return ResponseEntity.badRequest()
-                .body(ErrorMessage.of(e, HttpStatus.BAD_REQUEST));
+                             .body(ErrorMessage.of(e, HttpStatus.BAD_REQUEST));
+    }
+
+    @ExceptionHandler(ProductAlreadyExistException.class)
+    public ResponseEntity<ErrorMessage> productAlreadyExistExceptionHandler(
+            Exception e
+    ) {
+        return ResponseEntity.badRequest()
+                             .body(ErrorMessage.of(e, HttpStatus.BAD_REQUEST));
     }
 }

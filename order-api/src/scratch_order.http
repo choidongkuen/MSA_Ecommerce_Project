@@ -4,13 +4,13 @@ Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMTAxMjQyLCJleHAiOjE2ODExMDQ4NDJ9.C4H6oAMc0OGfGgOzNv7MmbrbPlOha466UMHAvJGHQj8
 
 {
-  "name": "상품2",
+  "name": "아이패드",
   "description": "안녕하세요 최고의 상품",
   "addProductItemRequestDtos": [
     {
       "productId": 2,
       "name": "아이템2",
-      "price": 1,
+      "price": 1000000,
       "count": 100
     }
   ]

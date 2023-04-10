@@ -8,6 +8,7 @@ import com.example.dto.product.AddProductItemRequestDto;
 import com.example.dto.product.AddProductRequestDto;
 import com.example.exception.product.ProductItemAlreadyExistException;
 import com.example.exception.product.ProductNotExistException;
+import com.example.exception.product.ProductAlreadyExistException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -32,11 +33,22 @@ public class ProductService {
 
     @Transactional
     public Product addProduct(Long sellerId, AddProductRequestDto request) {
-        return this.productRepository.save(Product.of(sellerId, request));
+
+        if(this.productRepository.existsBySellerIdAndName(sellerId,request.getName())) {
+            throw new ProductAlreadyExistException("일치하는 상품이 이미 존재합니다.");
+        }
+
+        Product product = this.productRepository.save(Product.of(sellerId,request));
+
+        for(ProductItem pi : product.getProductItemList()) {
+            pi.setProduct(product);
+        }
+
+        return product;
     }
 
     /*
-        1. product 가 존재해야 함
+        1. product 가존재해야 함
         2. product productItemList 의 해당 productItem이 존재하면 안됨
         3. 반환 타입으로 Product
      */
