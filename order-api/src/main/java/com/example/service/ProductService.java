@@ -116,5 +116,23 @@ public class ProductService {
 
         return productItem.updateProductItem(request);
     }
+
+    @Transactional
+    public void deleteProduct(Long sellerId, Long productId) {
+
+        Product product = this.productRepository.findBySellerIdAndId(sellerId, productId)
+                .orElseThrow(() -> new ProductNotExistException("일치하는 상품이 존재하지 않습니다."));
+
+        this.productRepository.delete(product); // Cascade.ALL -> ProductItem 도 같이 삭제
+    }
+
+    @Transactional
+    public void deleteProductItem(Long sellerId, Long productItemId) {
+
+        ProductItem productItem = this.productItemRepository.findById(productItemId)
+                .filter(pi -> pi.getSellerId().equals(sellerId))
+                .orElseThrow(() -> new ProductItemNotExistException("일치하는 상품 아이템이 존재하지 않습니다."));
+        this.productItemRepository.delete(productItem);
+    }
 }
 
