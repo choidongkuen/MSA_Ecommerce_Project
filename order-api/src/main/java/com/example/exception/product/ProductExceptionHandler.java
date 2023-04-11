@@ -1,12 +1,16 @@
 package com.example.exception.product;
 
+import com.example.controller.SearchController;
+import com.example.controller.SellerProductController;
 import com.example.exception.ErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@RestControllerAdvice
+@RestControllerAdvice(basePackageClasses =
+        {SellerProductController.class, SearchController.class}
+)
 public class ProductExceptionHandler {
 
     @ExceptionHandler(ProductNotExistException.class)
