@@ -75,8 +75,29 @@ Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJR
 
 ### 상품 조회
 GET http://localhost:8081/search/product/detail/4
-
-
+Content-Encoding: gzip
+Transfer-Encoding: chuncked
+Content-Type: application/json
 
 ### 상품 상세 조회
 GET http://localhost:8081/search/product?name=아이패드
+Content-Type: application/json
+
+### 장바구니 추가
+POST http://localhost:8081/customer/cart
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMjUwMjA1LCJleHAiOjE2ODEyNTM4MDV9.BruG-cN8WKUBaIyjJw-9NHSwmLATfm0T1EVJC3y9Q48
+
+{
+  "id": 4,
+  "sellerId": 1,
+  "productItems": [
+    {
+      "id": 1,
+      "name": "아이템2",
+      "price": 2000,
+      "count": 100
+    }
+  ],
+  "description": "상품 설명"
+}

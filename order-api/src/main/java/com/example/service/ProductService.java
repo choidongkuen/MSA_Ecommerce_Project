@@ -1,9 +1,11 @@
 package com.example.service;
 
+import com.example.domain.entity.Cart;
 import com.example.domain.entity.Product;
 import com.example.domain.entity.ProductItem;
 import com.example.domain.repository.ProductItemRepository;
 import com.example.domain.repository.ProductRepository;
+import com.example.dto.cart.AddCartProductRequestDto;
 import com.example.dto.product.*;
 import com.example.exception.product.ProductAlreadyExistException;
 import com.example.exception.product.ProductItemAlreadyExistException;
@@ -16,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -156,6 +159,18 @@ public class ProductService {
                                      .orElseThrow(() -> new ProductNotExistException("일치하는 상품이 존재하지 않습니다."));
 
 
+    }
+
+    @Transactional
+    public Optional<Product> getProductById(Long productId) {
+        return this.productRepository.findById(productId);
+    }
+
+    @Transactional
+    public void minusProductItem(List<Cart.ProductItem> items) {
+        for(Cart.ProductItem item : items){
+
+        }
     }
 }
 
