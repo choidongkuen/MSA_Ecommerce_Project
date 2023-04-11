@@ -1,6 +1,7 @@
 package com.example.domain.util;
 
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.springframework.context.annotation.Configuration;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -10,6 +11,7 @@ import java.nio.charset.StandardCharsets;
 /*
     JWT 의 Payload 는 쉽게 복호화 가능 -> 암호화
 */
+@Configuration
 public class Aes256Util {
 
     public static String alg = "AES/CBC/PKCS5Padding"; // 암호화 알고리즘

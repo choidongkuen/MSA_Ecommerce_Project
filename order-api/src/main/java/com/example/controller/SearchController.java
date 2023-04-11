@@ -1,10 +1,10 @@
 package com.example.controller;
 
+import com.example.domain.config.JwtAuthenticationProvider;
 import com.example.dto.product.ProductResponseDto;
 import com.example.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.domain.config.JwtAuthenticationProvider;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
