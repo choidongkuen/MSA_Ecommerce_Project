@@ -9,6 +9,7 @@ import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
@@ -23,26 +24,15 @@ public class RedisConfig {
     @Value("${spring.redis.port}")
     private Integer port;
 
-    @Bean
-    public CacheManager redisCacheManager(RedisConnectionFactory redisConnectionFactory) { // redis 캐시 관련 config bean
-
-        RedisCacheConfiguration conf = RedisCacheConfiguration.defaultCacheConfig()
-                                                              .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
-                                                              .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
-
-        return RedisCacheManager.RedisCacheManagerBuilder
-                .fromConnectionFactory(redisConnectionFactory)
-                .cacheDefaults(conf)
-                .build();
+    @Bean // Redis 연결을 위한 설정
+    public RedisConnectionFactory redisConnectionFactory() {
+        return new LettuceConnectionFactory(this.host,this.port);
     }
 
-
     @Bean
-    public RedisConnectionFactory redisConnectionFactory() { // redis connection 을 맺을 수 있는 Connection Factory(StandAlone)
-
-        RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
-        config.setHostName(host);
-        config.setPort(port);
-        return new LettuceConnectionFactory(config);
+    public RedisTemplate<?,?> redisTemplate() {
+        RedisTemplate<byte[], byte[]> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(redisConnectionFactory());
+        return redisTemplate;
     }
 }
