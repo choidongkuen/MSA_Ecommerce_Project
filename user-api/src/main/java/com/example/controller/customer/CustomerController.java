@@ -1,18 +1,16 @@
 package com.example.controller.customer;
 
+import com.example.domain.common.UserVo;
+import com.example.domain.config.JwtAuthenticationProvider;
 import com.example.domain.entity.Customer;
-import com.example.domain.entity.CustomerBalanceHistory;
 import com.example.dto.ChangeBalanceDto;
 import com.example.dto.CustomerDto;
 import com.example.exception.customer.CustomerNotExistException;
 import com.example.service.customer.CustomerBalanceHistoryService;
 import com.example.service.customer.CustomerService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.domain.common.UserVo;
-import org.example.domain.config.JwtAuthenticationProvider;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,7 +51,7 @@ public class CustomerController {
         UserVo userVo = this.jwtAuthenticationProvider.getUserVo(token);
 
         return ResponseEntity.ok(
-                this.customerBalanceHistoryService.changeBalance(userVo.getUserId(),request).getCurrentBalance()
+                this.customerBalanceHistoryService.changeBalance(userVo.getUserId(), request).getCurrentBalance()
         );
     }
 }

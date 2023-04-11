@@ -4,20 +4,20 @@ import com.example.domain.entity.Product;
 import com.example.domain.entity.ProductItem;
 import com.example.domain.repository.ProductItemRepository;
 import com.example.domain.repository.ProductRepository;
-import com.example.dto.product.AddProductItemRequestDto;
-import com.example.dto.product.AddProductRequestDto;
-import com.example.dto.product.UpdateProductItemRequestDto;
-import com.example.dto.product.UpdateProductRequestDto;
+import com.example.dto.product.*;
+import com.example.exception.product.ProductAlreadyExistException;
 import com.example.exception.product.ProductItemAlreadyExistException;
 import com.example.exception.product.ProductItemNotExistException;
 import com.example.exception.product.ProductNotExistException;
-import com.example.exception.product.ProductAlreadyExistException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -37,6 +37,7 @@ public class ProductService {
     private final ProductRepository productRepository;
 
     private final ProductItemRepository productItemRepository;
+
 
     @Transactional
     public Product addProduct(Long sellerId, AddProductRequestDto request) {
@@ -133,6 +134,31 @@ public class ProductService {
                 .filter(pi -> pi.getSellerId().equals(sellerId))
                 .orElseThrow(() -> new ProductItemNotExistException("일치하는 상품 아이템이 존재하지 않습니다."));
         this.productItemRepository.delete(productItem);
+    }
+
+    /*
+      1. name 에 맞는 product 조회
+     */
+    @Transactional(readOnly = true)
+    public List<ProductResponseDto> findAllByName(
+            @RequestParam String name
+    ) {
+        return this.productRepository.findAllByName(name)
+                .stream()
+                 .map(ProductResponseDto::from)
+                .collect(Collectors.toList());
+    }
+
+    /*
+      1. 상세조회
+     */
+    @Transactional(readOnly = true)
+    public ProductResponseDto searchDetailProduct(Long productId) {
+        return this.productRepository.findById(productId)
+                .map(ProductResponseDto::from)
+                .orElseThrow(() -> new ProductNotExistException("일치하는 상품이 존재하지 않습니다."));
+
+
     }
 }
 

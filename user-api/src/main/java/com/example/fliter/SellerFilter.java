@@ -1,9 +1,9 @@
 package com.example.fliter;
 
+import com.example.domain.common.UserVo;
+import com.example.domain.config.JwtAuthenticationProvider;
 import com.example.service.seller.SellerService;
 import lombok.RequiredArgsConstructor;
-import org.example.domain.common.UserVo;
-import org.example.domain.config.JwtAuthenticationProvider;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
