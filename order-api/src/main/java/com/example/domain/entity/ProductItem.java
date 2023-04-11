@@ -45,6 +45,7 @@ public class ProductItem extends BaseEntity {
                 .price(request.getPrice())
                 .count(request.getCount())
                 .build();
+
     }
 
     public Product setProduct(Product product) {
@@ -58,5 +59,9 @@ public class ProductItem extends BaseEntity {
         this.count = request.getCount();
 
         return this.product;
+    }
+
+    public void minusItem(Integer count) {
+        this.count -= count;
     }
 }

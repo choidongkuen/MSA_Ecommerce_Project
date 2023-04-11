@@ -57,7 +57,7 @@ Content-Type: application/json
 }
 
 ### 이메일 인증 ( 셀러 )
-GET http://localhost:8080/signup/seller/verify?email=danaver12@daum.net&code=OZ2ibv8wY2
+GET http://localhost:8080/signup/seller/verify?email=danaver12@daum.net&code=c6zLAj7dBY
 
 
 
