@@ -24,7 +24,7 @@ public class RedisClient {
     }
 
     public <T> T get(String key, Class<T> classType) { // String 타입의 key
-        String redisValue = (String) redisTemplate.opsForValue().get(key);
+        String redisValue = (String) redisTemplate.opsForValue().get(key); // valueOperations
         if (ObjectUtils.isEmpty(redisValue)) {
             return null;
         } else {

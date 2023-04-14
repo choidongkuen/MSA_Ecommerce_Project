@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 @RedisHash("basket")
 public class Cart {
 
-
     @Id
     private Long customerId;
 

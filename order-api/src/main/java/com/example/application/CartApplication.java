@@ -42,7 +42,6 @@ public class CartApplication {
         }
 
 //        this.productService.minusProductItem(request.getProductItems());
-
         return this.cartService.addCart(customerId,request);
     }
 
@@ -58,7 +57,8 @@ public class CartApplication {
         Map<Long,Integer> currentItemCountMap = product.getProductItemList().stream() // Product
                 .collect(Collectors.toMap(ProductItem::getId, ProductItem::getCount));
 
-
+        // 일치하는게 없으면 true
+        // 일치하는게 하나라도 있으면 false
         return request.getProductItems().stream().noneMatch(
                 requestItem -> {
                     Integer itemCountInCart = cartItemCountMap.get(requestItem.getId());

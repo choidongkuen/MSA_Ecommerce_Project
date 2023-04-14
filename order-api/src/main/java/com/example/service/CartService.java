@@ -43,13 +43,13 @@ public class CartService {
             // redis 이미 있는 product
             Cart.Product redisProduct = optionalProduct.get();
 
-            // requested
+            // requested(요청한 ProductItems -> Cart.ProductItems)
             List<Cart.ProductItem> items
                     = request.getProductItems().stream()
                     .map(Cart.ProductItem :: from)
                     .collect(Collectors.toList());
 
-            // 검색 향상을 위해 map
+            // 검색 향상을 위해 map(redis 존재하는 MAP)
             Map<Long,Cart.ProductItem> redisItemMap = redisProduct.getProductItems()
                     .stream()
                     .collect(Collectors.toMap(Cart.ProductItem::getId, item -> item));
@@ -72,11 +72,9 @@ public class CartService {
                     redisItem.setCount(redisItem.getCount()+item.getCount()); // 개수 추가
                 }
             }
-        } else {
+        } else { // 요청한 Product 이 없는 경우
             Cart.Product product = Cart.Product.from(request);
             cart.getProducts().add(product);
-            redisClient.put(customerId,cart);
-            return cart;
         }
         redisClient.put(customerId,cart);
         return cart;
