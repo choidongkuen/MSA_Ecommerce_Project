@@ -1,17 +1,16 @@
 ### 셀러 상품 등록
 POST http://localhost:8081/seller/product
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMTg5MjY3LCJleHAiOjE2ODExOTI4Njd9.Dp1aqmDIIxmQPyaghQ1zMxDrRJU72pYBuSqhUPGZV80
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODEzMzAxODYsImV4cCI6MTY4MTMzMzc4Nn0.W5FysMADRj3zBSofyo8K6uPUymTUj0erwwIyRW8W_fc
 
 {
   "name": "아이폰",
   "description": "안녕하세요 최고의 핸드폰",
   "addProductItemRequestDtos": [
     {
-      "productId": 5,
-      "name": "아이템1",
-      "price": 1000000,
-      "count": 100
+      "name": "270",
+      "count": 1,
+      "price": 200000
     }
   ]
 }
@@ -38,16 +37,14 @@ Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJR
   "id": 1,
   "name": "수정된 이름",
   "description": "애플이 출시한 최고의 테블릿!",
-  "items":
-          [
-            {
-              "id": 1,
-              "name": "아이템2",
-              "price": 200000,
-              "count": 100000000
-            }
-
-          ]
+  "items": [
+    {
+      "id": 1,
+      "name": "아이템2",
+      "price": 200000,
+      "count": 100000000
+    }
+  ]
 }
 
 ### 셀러 상품 아이템 수정
@@ -83,21 +80,42 @@ Content-Type: application/json
 GET http://localhost:8081/search/product?name=아이패드
 Content-Type: application/json
 
+
+### 셀러 상품 등록
+POST http://localhost:8081/seller/product
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxNDk0NzA3LCJleHAiOjE2ODE0OTgzMDd9.JOIEG1X72E-jogTHXVlVyoxeN8PXy446Fn3GACRpCGY
+
+{
+  "name": "나이키 에어포스2",
+  "description": "최고의 신발",
+  "addProductItemRequestDtos": [
+    {
+      "name": "300",
+      "count": 10,
+      "price": 20000
+    }
+  ]
+}
+
+
 ### 장바구니 추가
 POST http://localhost:8081/customer/cart
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxMjUwMjA1LCJleHAiOjE2ODEyNTM4MDV9.BruG-cN8WKUBaIyjJw-9NHSwmLATfm0T1EVJC3y9Q48
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0VUpLVU5CTjFabGY3QkV5N2FPZmVTYjJRWktxRGhScnl6MXl5dHZpWkUwPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgxNDk0NzA3LCJleHAiOjE2ODE0OTgzMDd9.JOIEG1X72E-jogTHXVlVyoxeN8PXy446Fn3GACRpCGY
 
 {
-  "id": 4,
+  "id": 9,
   "sellerId": 1,
+  "name": "나이키 에어포스2",
+  "description": "상품 설명",
   "productItems": [
     {
-      "id": 1,
-      "name": "아이템2",
-      "price": 2000,
-      "count": 100
+      "id": 15,
+      "name": "300",
+      "price": 20000,
+      "count": 1,
+      "description": "아이템 설명"
     }
-  ],
-  "description": "상품 설명"
+  ]
 }
