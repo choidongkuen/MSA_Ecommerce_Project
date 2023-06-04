@@ -17,7 +17,7 @@ public class RedisConfig {
     @Value("${spring.redis.port}")
     private Integer port;
 
-    @Bean // Redis 연결을 위한 설정
+    @Bean // Redis 연결을 위한 설정(Lettuce 사용)
     public RedisConnectionFactory redisConnectionFactory() {
         return new LettuceConnectionFactory(this.host, this.port);
     }

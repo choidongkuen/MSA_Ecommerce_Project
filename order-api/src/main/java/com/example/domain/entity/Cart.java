@@ -24,7 +24,6 @@ public class Cart {
     @Id
     private Long customerId;
 
-
     private List<Product> products = new ArrayList<>();
 
     private List<String> messages = new ArrayList<>();
